@@ -7,7 +7,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-@SpringBootApplication(scanBasePackages = "org.example")
+@SpringBootApplication(scanBasePackages = {
+        "org.example",
+        "org.authentication"
+        })
 @EnableAspectJAutoProxy
 public class Main {
     public static void main(String[] args) {

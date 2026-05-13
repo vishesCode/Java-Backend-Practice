@@ -10,52 +10,33 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+ext{
+    lombokVersion="1.18.30"
+}
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-aop:2.6.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.0'
-    implementation 'org.aspectj:aspectjrt:1.9.7'
-    implementation 'org.aspectj:aspectjweaver:1.9.7'
-    implementation 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
-    // Spring Core
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // Spring Data JPA
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap', version: '4.1.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-
-    // Validation
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-
-    // PostgreSQL
-    runtimeOnly 'org.postgresql:postgresql'
-
-    // Lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
-    // JWT
+    implementation 'org.modelmapper:modelmapper:3.2.0'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+    implementation group: 'org.projectlombok', name:'lombok', version: "$lombokVersion"
+    compileOnly group: 'org.projectlombok', name:'lombok', version: "$lombokVersion"
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "$lombokVersion"
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: "$lombokVersion"
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: "$lombokVersion"
     implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
-    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+    implementation 'org.springframework.boot:spring-boot-starter'
 
-    // Swagger / OpenAPI
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
-
-    // Dev Tools
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-    // Testing
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
-
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation "com.google.guava:guava:33.0.0-jre"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.10.0"
 }
 
 test {
