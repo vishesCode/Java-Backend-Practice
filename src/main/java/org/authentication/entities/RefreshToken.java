@@ -1,4 +1,4 @@
-package org.authentication.Entitites;
+package org.authentication.entities;
 
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -29,5 +29,5 @@ public class RefreshToken {
 
     @OneToOne
     @JoinColumn(name = "id" ,referencedColumnName = "user_id")
-    private UserInfo user;
+    private UserInfo userInfo;
 }

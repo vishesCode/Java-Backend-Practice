@@ -1,4 +1,4 @@
-package org.authentication.Entitites;
+package org.authentication.entities;
 
 
 import jakarta.persistence.*;
