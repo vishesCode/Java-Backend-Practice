@@ -42,5 +42,8 @@ public class RefreshTokenService {
         }
         return token;
     }
+    public Optional<RefreshToken> findByRefreshToken(String refreshToken){
+        return refreshTokenRepository.findByToken(refreshToken);
+    }
 
 }

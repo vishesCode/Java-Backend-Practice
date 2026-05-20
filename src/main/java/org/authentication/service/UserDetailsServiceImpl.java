@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.authentication.entities.UserInfo;
+import org.authentication.model.UserInfoDto;
 import org.authentication.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,19 +49,19 @@ public class UserDetailsServiceImpl implements UserDetailsService
         return new CustomUserDetails(user);
     }
 
-//    public UserInfo checkIfUserAlreadyExist(UserInfoDto userInfoDto){
-//        return userRepository.findByUsername(userInfoDto.getUsername());
-//    }
-//
-//    public Boolean signupUser(UserInfoDto userInfoDto){
-//        //        ValidationUtil.validateUserAttributes(userInfoDto);
-//        userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
-//        if(Objects.nonNull(checkIfUserAlreadyExist(userInfoDto))){
-//            return false;
-//        }
-//        String userId = UUID.randomUUID().toString();
-//        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>()));
-//        // pushEventToQueue
-//        return true;
-//    }
+    public UserInfo checkIfUserAlreadyExist(UserInfoDto userInfoDto){
+        return userRepository.findByUsername(userInfoDto.getUsername());
+    }
+
+    public Boolean signupUser(UserInfoDto userInfoDto){
+        //        ValidationUtil.validateUserAttributes(userInfoDto);
+        userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
+        if(Objects.nonNull(checkIfUserAlreadyExist(userInfoDto))){
+            return false;
+        }
+        String userId = UUID.randomUUID().toString();
+        userRepository.save(new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>()));
+        // pushEventToQueue
+        return true;
+    }
 }
